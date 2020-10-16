@@ -1,0 +1,72 @@
+\documentclass{article}
+
+% If you're new to LaTeX, here's some short tutorials:
+% https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+% https://en.wikibooks.org/wiki/LaTeX/Basics
+
+% Formatting
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+
+% Math
+% https://www.overleaf.com/learn/latex/Mathematical_expressions
+% https://en.wikibooks.org/wiki/LaTeX/Mathematics
+\usepackage{amsmath,amsfonts,amssymb,mathtools}
+
+% Images
+% https://www.overleaf.com/learn/latex/Inserting_Images
+% https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
+\usepackage{graphicx,float}
+
+% Tables
+% https://www.overleaf.com/learn/latex/Tables
+% https://en.wikibooks.org/wiki/LaTeX/Tables
+
+% Algorithms
+% https://www.overleaf.com/learn/latex/algorithms
+% https://en.wikibooks.org/wiki/LaTeX/Algorithms
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{algorithmic}
+
+% Code syntax highlighting
+% https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+\usepackage{minted}
+\usemintedstyle{borland}
+
+% Title content
+\title{CS264A Homework 1}
+\author{Bobby Judd}
+\date{October 21, 2020}
+
+\begin{document}
+
+\maketitle
+
+% 1
+\section{}
+\begin{itemize}
+\item $(\lnot A \implies B) \land (A \implies \lnot B) = (A \lor B) \land (\lnot A \lor \lnot B)$
+\item $(A \land B) \implies (\lnot A \lor \lnot B) = \lnot(A \lor B) \lor (\lnot A \lor \lnot B)$
+\end{itemize}
+The world where \textbf{A = true} and \textbf{B = false}, satisfies each sentence:
+\begin{itemize}
+\item $(true \lor false) \land (\lnot true \lor \lnot false) = true \land true = true$
+\item $\lnot(true \lor false) \lor (\lnot true \lor \lnot false) = false \lor true = true$
+\end{itemize}
+
+% 2 
+\section{}
+\begin{itemize}
+\item $(A \implies B) \implies (\lnot B \implies \lnot A)\\
+       = \lnot(\lnot A \lor B) \lor (B \lor \lnot A)\\
+       = (A \land \lnot B) \lor (B \lor \lnot A)\\
+       = (A \land \lnot B) \lor \lnot (A \land \lnot B)\\
+       = true$
+\item $((A \lor B) \land (A \implies C)) \implies (B \lor C)\\
+        = \lnot ((A \lor B) \land (\lnot A \lor C)) \lor (B \lor C)\\
+        = \lnot(B \lor C) \lor (B \lor C)\\
+        = true$
+\end{itemize}
+The reduction of both sentences yields \textbf{true} indicating both are \textbf{true} at every world and thus both are \textbf{valid}.
+
+\end{document}
