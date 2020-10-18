@@ -69,4 +69,27 @@ The world where \textbf{A = true} and \textbf{B = false}, satisfies each sentenc
 \end{itemize}
 The reduction of both sentences yields \textbf{true} indicating both are \textbf{true} at every world and thus both are \textbf{valid}.
 
+% 3
+\section{}
+\renewcommand{\labelenumi}{(\alph{enumi})}
+ \begin{enumerate}
+   \item $\exists P (\Delta) \lor \exists P (\Gamma) \\
+   = \Delta | P \lor \Delta | \lnot P \lor \Gamma | P \lor \Gamma | \lnot P \\
+   = (\Delta | P \lor \Gamma | P) \lor (\Delta | \lnot P \lor \Gamma | \lnot P) \quad \textrm{associative prop.}\\
+   = (\Delta \lor \Gamma) | P \lor (\Delta \lor \Gamma) | \lnot P \\
+   = \exists P (\Delta \lor \Gamma) $
+   \item $ (\forall P \Delta) \land (\forall P \Gamma) \\
+   = \Delta | P \land \Delta | \lnot P \land \Gamma | P \land \Gamma | \lnot P \\
+   = (\Delta | P \land \Gamma | P) \land (\Delta | \lnot P \land \Gamma | \lnot P) \quad \textrm{associative prop.}\\
+   = (\Delta \land \Gamma) | P \land (\Delta \land \Gamma) | \lnot P$
+ \end{enumerate}
+ 
+ % 4
+ \section{}
+ \[\Delta = A \Rightarrow B, \lnot A \Rightarrow (\lnot B \land C), (B \lor C) \Rightarrow D\]
+ \[= \lnot A \lor B, \quad A \lor (\lnot B \land C), \quad (\lnot B \land \lnot C) \lor D\]
+ \[= \lnot A \lor B, \quad (A \lor \lnot B) \land (A \lor C), \quad (\lnot B \lor D) \land (\lnot C \lor D)\]
+ \[= \lnot A \lor B, \quad (A \lor \lnot B), (A \lor C), \quad (\lnot B \lor D), (\lnot C \lor D)\]
+ \[= \{\{\lnot A \lor B\}, \quad \{A \lor \lnot B\}, \quad \{A \lor C\}, \quad \{\lnot B \lor D\}, \quad \{\lnot C \lor D\}\}\]
+ 
 \end{document}
