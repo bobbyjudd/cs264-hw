@@ -33,6 +33,10 @@
 \usepackage{minted}
 \usemintedstyle{borland}
 
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
 % Title content
 \title{CS264A Homework 1}
 \author{Bobby Judd}
@@ -83,13 +87,156 @@ The reduction of both sentences yields \textbf{true} indicating both are \textbf
    = (\Delta | P \land \Gamma | P) \land (\Delta | \lnot P \land \Gamma | \lnot P) \quad \textrm{associative prop.}\\
    = (\Delta \land \Gamma) | P \land (\Delta \land \Gamma) | \lnot P$
  \end{enumerate}
- 
+
  % 4
  \section{}
  \[\Delta = A \Rightarrow B, \lnot A \Rightarrow (\lnot B \land C), (B \lor C) \Rightarrow D\]
  \[= \lnot A \lor B, \quad A \lor (\lnot B \land C), \quad (\lnot B \land \lnot C) \lor D\]
  \[= \lnot A \lor B, \quad (A \lor \lnot B) \land (A \lor C), \quad (\lnot B \lor D) \land (\lnot C \lor D)\]
  \[= \lnot A \lor B, \quad (A \lor \lnot B), (A \lor C), \quad (\lnot B \lor D), (\lnot C \lor D)\]
- \[= \{\{\lnot A \lor B\}, \quad \{A \lor \lnot B\}, \quad \{A \lor C\}, \quad \{\lnot B \lor D\}, \quad \{\lnot C \lor D\}\}\]
+ \[= \{\{\lnot A, B\}, \quad \{A, \lnot B\}, \quad \{A, C\}, \quad \{\lnot B, D\}, \quad \{\lnot C, D\}\}\]
  
+ % 5
+ \section{}
+ 
+ % 6
+ \section{}
+ \[\Delta = \{\{A, B\}, \{\lnot A, \lnot C\}, \{D, \lnot B \}, \{D, \lnot C \}, \{\lnot A, E\}\}\]
+  \renewcommand{\labelenumi}{\arabic{enumi}.}
+ \begin{enumerate}
+ \item $\{A, B\}$
+ \item $\{\lnot A, \lnot C\}$
+ \item $\{D, \lnot B \}$
+ \item $\{D, \lnot C \}$
+ \item $\{\lnot A, E \}$
+ \newline
+ \noindent\rule{4cm}{0.4pt}
+ \item $\{B, E \}$ \quad Resolving A over 1 \& 5
+ \item $\{D, E \}$ \quad Resolving B over 3 \& 6
+ \end{enumerate}
+ 
+ % 7
+ \section{}
+ \[\Delta = (\lnot A \lor \lnot D \lor E) \land
+            (\lnot C \lor D) \land
+            (\lnot D \lor \lnot E) \land
+            (\lnot B \lor C \lor D) \]
+\[  \quad = \{\lnot A, \lnot D, E\},
+            \{\lnot C, D\},
+            \{\lnot D, \lnot E\},
+            \{\lnot B, C, D\} \]
+            
+\begin{tikzpicture}
+  \node {$\{\lnot A, \lnot D, E\},
+            \{\lnot C, D\},
+            \{\lnot D, \lnot E\},
+            \{\lnot B, C, D\}$}[sibling distance=25em]
+    child {node {$\{\lnot D, E\},
+            \{\lnot C, D\},
+            \{\lnot D, \lnot E\},
+            \{\lnot B, C, D\}$}[sibling distance=27em]
+        child {
+            node {$\{\lnot D, E\},
+            \{\lnot C, D\},
+            \{\lnot D, \lnot E\},
+            \{C, D\}$} [sibling distance=12em]
+                child {
+                    node {$\{\lnot D, E\},
+                        \{D\},
+                        \{\lnot D, \lnot E\}$} [sibling distance=7em]
+                        child {
+                            node {$\{\{E\}, \{\lnot E\}\}$} [sibling distance=5em]
+                            child {
+                                node {$\{\{\}\}$}
+                                edge from parent node[left]{E=t}
+                            }
+                            child {
+                                node {$\{\{\}\}$}
+                                edge from parent node[right]{E=f}
+                            }
+                            edge from parent node[left]{D=t}
+                        }
+                        child {
+                            node {$\{\{\}\}$}
+                            edge from parent node[left]{D=f}
+                        }
+                    edge from parent node[left]{C=t}
+                }
+                child {
+                    node {$\{\lnot D, E\},
+                        \{\lnot D, \lnot E\},
+                        \{D\},$} [sibling distance=7em]
+                        child {
+                            node {$\{\{E\}, \{\lnot E\}\}$} [sibling distance=5em]
+                            child {
+                                node {$\{\{\}\}$}
+                                edge from parent node[left]{E=t}
+                            }
+                            child {
+                                node {$\{\{\}\}$}
+                                edge from parent node[right]{E=f}
+                            }
+                            edge from parent node[left]{D=t}
+                        }
+                        child {
+                            node {$\{\{\}\}$}
+                            edge from parent node[left]{D=f}
+                        }
+                    edge from parent node[left]{C=f}
+                }
+                edge from parent node[left]{B=t}
+        }
+        child {
+            node {$\{\lnot D, E\},
+            \{\lnot C, D\},
+            \{\lnot D, \lnot E\}$} [sibling distance=12em]
+                child {
+                    node {$\{\lnot D, E\},
+                        \{D\},
+                        \{\lnot D, \lnot E\}$} [sibling distance=7em]
+                        child {
+                            node {$\{\{E\}, \{\lnot E\}\}$} [sibling distance=5em]
+                            child {
+                                node {$\{\{\}\}$}
+                                edge from parent node[left]{E=t}
+                            }
+                            child {
+                                node {$\{\{\}\}$}
+                                edge from parent node[right]{E=f}
+                            }
+                            edge from parent node[left]{D=t}
+                        }
+                        child {
+                            node {$\{\{\}\}$}
+                            edge from parent node[left]{D=f}
+                        }
+                    edge from parent node[left]{C=t}
+                }
+                child {
+                    node {$\{\lnot D, E\},
+                            \{\lnot D, \lnot E\}$} [sibling distance=7em]
+                        child {
+                            node {$\{\{E\}, \{\lnot E\}\}$} [sibling distance=5em]
+                            child {
+                                node {$\{\{\}\}$}
+                                edge from parent node[left]{E=t}
+                            }
+                            child {
+                                node {$\{\{\}\}$}
+                                edge from parent node[right]{E=f}
+                            }
+                            edge from parent node[left]{D=t}
+                        }
+                        child {
+                            node {$\{\}$}
+                            edge from parent node[left]{D=f}
+                        }
+                    edge from parent node[left]{C=f}
+                }
+                edge from parent node[left]{B=f}
+            }
+        edge from parent node[left]{A=t}}
+    child{edge from parent[draw=none]};
+\end{tikzpicture}
+
 \end{document}
