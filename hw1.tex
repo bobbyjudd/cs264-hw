@@ -178,4 +178,176 @@ The reduction of both sentences yields \textbf{true} indicating both are \textbf
             child{edge from parent[draw=none]};
 \end{tikzpicture}
 
+% 8
+\section{}
+See attached
+
+% 9
+\section{}
+\[\Delta = (\lnot A \lor B) \land
+            (A \lor \lnot B) \land
+            (A \lor C) \land
+            (D \lor \lnot B) \land
+            (D \lor \lnot C) \]
+\[\quad =  \{\{\lnot A , B\} ,
+            \{A , \lnot B\} ,
+            \{A , C\} ,
+            \{D , \lnot B\} ,
+            \{D , \lnot C\}\} \]
+\newline
+\begin{center}
+CDPLL
+\end{center}
+\begin{center}
+\begin{tikzpicture}
+\node {$\{\{\lnot A , B\} ,
+            \{A , \lnot B\} ,
+            \{A , C\} ,
+            \{D , \lnot B\} ,
+            \{D , \lnot C\}\}$}[sibling distance=20em, align=center]
+    child {
+            node {
+                $I = \{A, B, D\}$,\\
+                $\Gamma = \{\},$ \\
+                2 models (for $\lnot C$ and $C$)
+            }
+            edge from parent node[left]{A=t}
+    }
+    child {
+        node {
+            $I = \{\lnot A, \lnot B, C, D\}$,\\
+            $\Gamma = \{\},$ \\
+            1 model
+        }
+        edge from parent node[left]{A=f}
+    };
+\end{tikzpicture}
+\newline
+$\Delta$ contains 3 models, which are obtained by counting the models in each leaf node.
+\end{center}
+
+% 10
+\section{}
+\renewcommand{\labelenumi}{(\alph{enumi})}
+ \begin{enumerate}
+   \item $\Delta = \{\{P_1, P_2, P_3\}, \{\lnot P_1, Q\}, \{\lnot P_3, Q\}\}$
+   \item
+        \begin{itemize}
+            \item $P_1$: $\{P_2, P_3, Q\}$ Using 1 and 2
+            \item $P_2$: No legitimate resolutions
+            \item $P_3$: No legitimate resolutions
+            \item $Q$: No legitimate resolutions
+        \end{itemize}
+   \item Decision Tree:\newline
+   \begin{tikzpicture}
+    \node {$P_1$}[sibling distance=16em, align=center]
+        child {
+                node {$P_2$}[sibling distance=8em]
+                child {
+                    node {$P_3$}[sibling distance=4em]
+                    child {
+                        node {$Q$}[sibling distance=2em]
+                        child {
+                            node {T} edge from parent [solid]
+                        }
+                        child {
+                            node {F} edge from parent [dashed]
+                        }
+                        edge from parent [solid]
+                    }
+                    child {
+                        node {$Q$}[sibling distance=2em]
+                        child {
+                            node {T} edge from parent [solid]
+                        }
+                        child {
+                            node {F} edge from parent [dashed]
+                        }
+                        edge from parent [dashed]
+                    }
+                    edge from parent [solid]
+                }
+                child {
+                    node {$P_3$}[sibling distance=4em]
+                    child {
+                        node {$Q$}[sibling distance=2em]
+                        child {
+                            node {T} edge from parent [solid]
+                        }
+                        child {
+                            node {F} edge from parent [dashed]
+                        }
+                        edge from parent [solid]
+                    }
+                    child {
+                        node {$Q$}[sibling distance=2em]
+                        child {
+                            node {T} edge from parent [solid]
+                        }
+                        child {
+                            node {F} edge from parent [dashed]
+                        }
+                        edge from parent [dashed]
+                    }
+                    edge from parent [dashed]
+                }
+                edge from parent [solid]
+        }
+        child {
+                node {$P_2$}[sibling distance=8em]
+                child {
+                    node {$P_3$}[sibling distance=4em]
+                    child {
+                        node {$Q$}[sibling distance=2em]
+                        child {
+                            node {T} edge from parent [solid]
+                        }
+                        child {
+                            node {F} edge from parent [dashed]
+                        }
+                        edge from parent [solid]
+                    }
+                    child {
+                        node {$Q$}[sibling distance=2em]
+                        child {
+                            node {T} edge from parent [solid]
+                        }
+                        child {
+                            node {T} edge from parent [dashed]
+                        }
+                        edge from parent [dashed]
+                    }
+                    edge from parent [solid]
+                }
+                child {
+                    node {$P_3$}[sibling distance=4em]
+                    child {
+                        node {$Q$}[sibling distance=2em]
+                        child {
+                            node {T} edge from parent [solid]
+                        }
+                        child {
+                            node {F} edge from parent [dashed]
+                        }
+                        edge from parent [solid]
+                    }
+                    child {
+                        node {$Q$}[sibling distance=2em]
+                        child {
+                            node {F} edge from parent [solid]
+                        }
+                        child {
+                            node {F} edge from parent [dashed]
+                        }
+                        edge from parent [dashed]
+                    }
+                    edge from parent [dashed]
+                }
+                edge from parent [dashed]
+        };
+    \end{tikzpicture}
+\newline
+$\Delta$ contains 8 models, which are obtained by counting the "T" leaf nodes.
+ \end{enumerate}
+
 \end{document}
