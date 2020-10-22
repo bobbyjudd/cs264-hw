@@ -121,122 +121,61 @@ The reduction of both sentences yields \textbf{true} indicating both are \textbf
             (\lnot C \lor D) \land
             (\lnot D \lor \lnot E) \land
             (\lnot B \lor C \lor D) \]
-\[  \quad = \{\lnot A, \lnot D, E\},
+\[  \quad = \{\{\lnot A, \lnot D, E\},
             \{\lnot C, D\},
             \{\lnot D, \lnot E\},
-            \{\lnot B, C, D\} \]
-            
+            \{\lnot B, C, D\}\} \]
+\newline
+\newline
 \begin{tikzpicture}
-  \node {$\{\lnot A, \lnot D, E\},
+\node {$\{\lnot A, \lnot D, E\},
             \{\lnot C, D\},
             \{\lnot D, \lnot E\},
-            \{\lnot B, C, D\}$}[sibling distance=25em]
-    child {node {$\{\lnot D, E\},
+            \{\lnot B, C, D\}$}[sibling distance=30em, align=center]
+    child {node {$I = \{A\}$,\\ $\Gamma = \{\lnot D, E\},
             \{\lnot C, D\},
             \{\lnot D, \lnot E\},
-            \{\lnot B, C, D\}$}[sibling distance=27em]
-        child {
-            node {$\{\lnot D, E\},
-            \{\lnot C, D\},
-            \{\lnot D, \lnot E\},
-            \{C, D\}$} [sibling distance=12em]
+            \{\lnot B, C, D\}$}[sibling distance=20em]
                 child {
-                    node {$\{\lnot D, E\},
-                        \{D\},
-                        \{\lnot D, \lnot E\}$} [sibling distance=7em]
-                        child {
-                            node {$\{\{E\}, \{\lnot E\}\}$} [sibling distance=5em]
-                            child {
-                                node {$\{\{\}\}$}
-                                edge from parent node[left]{E=t}
-                            }
-                            child {
-                                node {$\{\{\}\}$}
-                                edge from parent node[right]{E=f}
-                            }
-                            edge from parent node[left]{D=t}
-                        }
-                        child {
-                            node {$\{\{\}\}$}
-                            edge from parent node[left]{D=f}
-                        }
+                node {$I = \{A, B\}$,\\ $\Gamma = \{\lnot D, E\},
+                \{\lnot C, D\},
+                \{\lnot D, \lnot E\},
+                \{C, D\}$} [sibling distance=7em]
+                    child {
+                    node {FAIL}
                     edge from parent node[left]{C=t}
-                }
-                child {
-                    node {$\{\lnot D, E\},
-                        \{\lnot D, \lnot E\},
-                        \{D\},$} [sibling distance=7em]
-                        child {
-                            node {$\{\{E\}, \{\lnot E\}\}$} [sibling distance=5em]
-                            child {
-                                node {$\{\{\}\}$}
-                                edge from parent node[left]{E=t}
-                            }
-                            child {
-                                node {$\{\{\}\}$}
-                                edge from parent node[right]{E=f}
-                            }
-                            edge from parent node[left]{D=t}
-                        }
-                        child {
-                            node {$\{\{\}\}$}
-                            edge from parent node[left]{D=f}
-                        }
+                    }
+                    child {
+                    node {FAIL}
                     edge from parent node[left]{C=f}
-                }
+                    }
                 edge from parent node[left]{B=t}
-        }
-        child {
-            node {$\{\lnot D, E\},
-            \{\lnot C, D\},
-            \{\lnot D, \lnot E\}$} [sibling distance=12em]
-                child {
-                    node {$\{\lnot D, E\},
-                        \{D\},
-                        \{\lnot D, \lnot E\}$} [sibling distance=7em]
-                        child {
-                            node {$\{\{E\}, \{\lnot E\}\}$} [sibling distance=5em]
-                            child {
-                                node {$\{\{\}\}$}
-                                edge from parent node[left]{E=t}
-                            }
-                            child {
-                                node {$\{\{\}\}$}
-                                edge from parent node[right]{E=f}
-                            }
-                            edge from parent node[left]{D=t}
-                        }
-                        child {
-                            node {$\{\{\}\}$}
-                            edge from parent node[left]{D=f}
-                        }
-                    edge from parent node[left]{C=t}
                 }
                 child {
-                    node {$\{\lnot D, E\},
-                            \{\lnot D, \lnot E\}$} [sibling distance=7em]
+                node {$I = \{A, \lnot B\}$,\\ $\Gamma = \{\lnot D, E\},
+                \{\lnot C, D\},
+                \{\lnot D, \lnot E\}$} [sibling distance=16em]
+                    child {
+                    node {FAIL}
+                    edge from parent node[left]{C=t}
+                    }
+                    child {
+                    node {$I = \{A, \lnot B, \lnot C\}$,\\ $\Gamma = \{\{\lnot D, E\},\{\lnot D, \lnot E\}\}$}
                         child {
-                            node {$\{\{E\}, \{\lnot E\}\}$} [sibling distance=5em]
-                            child {
-                                node {$\{\{\}\}$}
-                                edge from parent node[left]{E=t}
-                            }
-                            child {
-                                node {$\{\{\}\}$}
-                                edge from parent node[right]{E=f}
-                            }
-                            edge from parent node[left]{D=t}
+                        node {FAIL}
+                        edge from parent node[left]{D=t}
                         }
                         child {
-                            node {$\{\}$}
-                            edge from parent node[left]{D=f}
+                        node {$I = \{A, \lnot B, \lnot C, \lnot D\}$,\\ $\Gamma = \{\}$}
+                        edge from parent node[left]{D=f}
                         }
                     edge from parent node[left]{C=f}
-                }
+                    }
                 edge from parent node[left]{B=f}
+                }
+            edge from parent node[left]{A=t}
             }
-        edge from parent node[left]{A=t}}
-    child{edge from parent[draw=none]};
+            child{edge from parent[draw=none]};
 \end{tikzpicture}
 
 \end{document}
