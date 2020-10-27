@@ -1,0 +1,108 @@
+\documentclass{article}
+
+% If you're new to LaTeX, here's some short tutorials:
+% https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+% https://en.wikibooks.org/wiki/LaTeX/Basics
+
+% Formatting
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+
+% Math
+% https://www.overleaf.com/learn/latex/Mathematical_expressions
+% https://en.wikibooks.org/wiki/LaTeX/Mathematics
+\usepackage{amsmath,amsfonts,amssymb,mathtools}
+
+% Images
+% https://www.overleaf.com/learn/latex/Inserting_Images
+% https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
+\usepackage{graphicx,float}
+
+% Tables
+% https://www.overleaf.com/learn/latex/Tables
+% https://en.wikibooks.org/wiki/LaTeX/Tables
+
+% Algorithms
+% https://www.overleaf.com/learn/latex/algorithms
+% https://en.wikibooks.org/wiki/LaTeX/Algorithms
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{algorithmic}
+
+% Code syntax highlighting
+% https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+\usepackage{minted}
+\usemintedstyle{borland}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+% Title content
+\title{CS264A Homework 2}
+\author{Bobby Judd}
+\date{November 4th, 2020}
+
+\begin{document}
+
+\maketitle
+
+% 1
+\clearpage
+\section{}
+\begin{enumerate}
+    \item $\{X, Y\},$
+    \item $\{X, Z\},$
+    \item $\{\lnot Y, W\},$
+    \item $\{\lnot Z, \lnot W\},$
+    \item $\{X, \lnot Y\},$
+    \item $\{\lnot X, W\},$
+    \item $\{\lnot X, \lnot W, V\},$
+    \item $\{\lnot X, \lnot W, \lnot V\},$
+    \item $\{Z, \lnot X\},$
+    \item $\{\lnot Z, W\},$
+    \newline
+    \noindent\rule{4cm}{0.4pt}
+    \item $\{Z\}$ \quad from 2 and 9
+    \item $\{-Z\}$ \quad from 4 and 10
+    \item $\{\}$ \quad from 11 and 12
+\end{enumerate}
+The minimal unsatisfiable core would be clauses 2, 4, 9, 10 or:
+\[\{\{X, Z\}, \{\lnot Z, \lnot W\}, \{Z, \lnot X\}, \{\lnot Z, W\}\}\]
+
+% 2 
+\clearpage
+\section{}
+
+% 3
+\clearpage
+\section{}
+ % 4
+ \clearpage
+ \section{}
+ 
+ % 5
+ \clearpage
+ \section{}
+ 
+ % 6
+ \clearpage
+ \section{}
+
+ 
+ % 7
+ \clearpage
+ \section{}
+
+% 8
+\clearpage
+\section{}
+
+% 9
+\clearpage
+\section{}
+
+% 10
+\clearpage
+\section{}
+
+\end{document}
