@@ -72,6 +72,51 @@ The minimal unsatisfiable core would be clauses 2, 4, 9, 10 or:
 % 2 
 \clearpage
 \section{}
+\renewcommand{\labelenumi}{(\alph{enumi})}
+ \begin{enumerate}
+   \item \[\Delta = (\lnot X), (X \lor Y), (X \lor Z), (\lnot Y \lor \lnot Z)\] \\
+       \begin{center}
+           \begin{tabular}{ |c|c|c|c| }
+            \hline
+             X&Y&Z&Cost \\ 
+             \hline
+             0&0&0&2 \\
+             0&0&1&1 \\
+             0&1&0&1 \\
+             0&1&1&1 \\
+             1&0&0&1 \\
+             1&0&1&1 \\
+             1&1&0&1 \\
+             1&1&1&2 \\
+             \hline
+            \end{tabular} \\
+            The optimal solution is a cost of 1
+        \end{center}
+
+   \item \[\]\\
+    \begin{tikzpicture}[align=center]
+    \node at (3,3) (x){$(X)$ \\ $(Z \lor \lnot X)$}[grow'=up, sibling distance=10em]
+        child {
+          node {$(\lnot Z)$ \\ $(Y \lor Z)$} 
+            child {node {$(\lnot X \lor \lnot Y)$ \\ $(Y)$}
+                  child {node (not_x) {$(\lnot X)$}edge from parent[<-]}
+                  child {node {$(X \lor Y)$} edge from parent[<-]}
+                  edge from parent[<-]
+                }
+            child {
+                node {$(\lnot Y \lor \lnot Z)$} edge from parent[<-]}
+                edge from parent[<-]
+        }
+        child{
+            node {$(X \lor Z)$}
+            edge from parent[<-]
+        };
+        
+    \node[draw] at (0, 0) (x_false) {false};
+    \draw [->] (x) -- (x_false);
+    \draw [->] (not_x) -- (x_false);
+    \end{tikzpicture}
+ \end{enumerate}
 
 % 3
 \clearpage
