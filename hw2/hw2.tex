@@ -226,8 +226,16 @@ The margin probability of A=T and C=F would be the sum of the two model weights:
  % 6
  \clearpage
  \section{}
-
- 
+The NNF circuit is not decomposable following reasons:
+\begin{itemize}
+    \item $and^{3}$ contains C in the left and right branches
+\end{itemize}
+The NNF circuit is not deterministic following reasons:
+\begin{itemize}
+ \item $or^{4}$ is not mutually exclusive, A and B could both be True.
+ \item $or^{5}$ is not mutually exclusive, $\lnot C$ and $\lnot A$ could both be True.
+ \item $or^{1}$ is not mutually exclusive. Which is shown if you enumerate possibilities for A, B, and C for this NNF.
+\end{itemize}
  % 7
  \clearpage
  \section{}
