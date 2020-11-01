@@ -121,14 +121,108 @@ The minimal unsatisfiable core would be clauses 2, 4, 9, 10 or:
 % 3
 \clearpage
 \section{}
+\[\Delta = (A \lor B \lor C), (\lnot A \lor D \lor E)\]
+\begin{center}
+    \begin{tikzpicture}[align=center]
+        \node {$(B \lor C \lor D \lor E)$ \\
+                $(A \lor B \lor C \lor \lnot (D \lor E))$ \\
+                $(\lnot A \lor D \lor E \lor \lnot (B \lor C))$}[grow'=up, sibling distance=12em]
+          child {node {$(A \lor B \lor C)$}edge from parent[<-]}
+          child {node {$(\lnot A \lor D \lor E)$} edge from parent[<-]};
+    \end{tikzpicture}
+\end{center}
+
  % 4
  \clearpage
  \section{}
- 
+ \begin{enumerate}
+     \item Enumerate possibilities of $\Delta = (\lnot D \lor \lnot E \lor B),(\lnot B \lor E \lor \lnot A),(\lnot D \lor C \lor \lnot B),(\lnot B \lor C \lor E)$:
+     \begin{center}
+           \begin{tabular}{ |c|c|c|c|c|c| }
+            \hline
+             A&B&C&D&E&Output \\ 
+             \hline
+             T&T&T&T&T&True \\
+            T&T&T&T&F&False \\
+            T&T&T&F&T&True \\
+            T&T&T&F&F&False \\
+            \hline
+            T&T&F&T&T&False \\
+            T&T&F&T&F&False \\
+            T&T&F&F&T&True \\
+            T&T&F&F&F&False \\
+            \hline
+            T&F&T&T&T&False \\
+            T&F&T&T&F&True \\
+            T&F&T&F&T&True \\
+            T&F&T&F&F&True \\
+            \hline
+            T&F&F&T&T&False \\
+            T&F&F&T&F&True \\
+            T&F&F&F&T&True \\
+            T&F&F&F&F&True \\
+            \hline
+            F&T&T&T&T&True \\
+            F&T&T&T&F&True \\
+            F&T&T&F&T&True \\
+            F&T&T&F&F&True \\
+            \hline
+            F&T&F&T&T&False \\
+            F&T&F&T&F&False \\
+            F&T&F&F&T&True \\
+            F&T&F&F&F&False \\
+            \hline
+            F&F&T&T&T&False \\
+            F&F&T&T&F&True \\
+            F&F&T&F&T&True \\
+            F&F&T&F&F&True \\
+            \hline
+            F&F&F&T&T&False \\
+            F&F&F&T&F&True \\
+            F&F&F&F&T&True \\
+            F&F&F&F&F&True \\
+             \hline
+            \end{tabular} \\
+        \end{center}
+        There are 20 variable instantiations that satisfy $\Delta$ and 12 that do not. Yes, the majority of variable instantiations satisfy this KB.
+        \item The solution to E-MAJ-SAT is Yes.  An example instantiation that  shows this is:
+        \begin{center}
+           \begin{tabular}{ |c|c|c|c|c|c| }
+                \hline
+                 A&B&C&D&E&Output \\ 
+                 \hline
+                T&F&T&T&T&False \\
+                T&F&T&T&F&True \\
+                T&F&T&F&T&True \\
+                T&F&T&F&F&True \\
+                 \hline
+                \end{tabular} \\
+        \end{center}
+        For the variable instantiation for: $X = (A=t, B=f, C=t)$ 3 out of 4 settings for $Y = (D,E)$ are true, which is a majority.
+        
+        \item Similar to part (b), we will use a given (A,B,C) instantiation to determine if the majority of (D,E) instantiations have a majority of True. Referencing the table in part (a) you can see for the 8 different instantiations of X, 5 of the corresponding Y's result in a majority of True, and 3 do not.  Which confirms MAJ-MAJ-SAT for $X=\{A,B,C\}$ and $Y=\{D,E\}$
+ \end{enumerate}
  % 5
  \clearpage
  \section{}
- 
+ \[ \Delta = \begin{cases} 
+      A \iff P_{A} \\
+      \lnot A \iff P_{\lnot A} \\
+      A \lor B \iff P_{B|A} \\
+      \lnot A \lor B \iff P_{B|\lnot A} \\
+      A \lor \lnot B \iff P_{\lnot B|A} \\
+      \lnot A \lor \lnot B \iff P_{\lnot B|\lnot A} \\
+      B \lor C \iff P_{C|B} \\
+      \lnot B \lor C \iff P_{C|\lnot B} \\
+      B \lor \lnot C \iff P_{\lnot C|B} \\
+      \lnot B \lor \lnot C \iff P_{\lnot C|\lnot B}
+   \end{cases}
+\]
+The weighted models that are consistent with A=T C=F are:
+\[\theta_{A}\theta_{B|A}\theta_{\lnot C|B} = (0.6)(0.8)(0.75) = 0.36\]
+\[\theta_{A}\theta_{\lnot B|A}\theta_{\lnot C|\lnot B} = (0.6)(0.2)(0.7) = 0.21\]
+
+The margin probability of A=T and C=F would be the sum of the two model weights: \textbf{0.57}
  % 6
  \clearpage
  \section{}
