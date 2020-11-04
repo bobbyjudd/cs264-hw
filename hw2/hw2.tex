@@ -239,10 +239,94 @@ The NNF circuit is not deterministic following reasons:
  % 7
  \clearpage
  \section{}
-
+\begin{enumerate}
+    \item The sequence to determine the minimum cardinality is: \\
+    \begin{verbatim}
+    min(
+        sum(
+            min(
+                sum(C, B),
+                sum(B, -C)
+            ),
+            A
+        ),
+        sum(
+            A,
+            min(
+                sum(C, -B),
+                sum(-B, -C)
+            )
+        )
+    )
+    \end{verbatim}
+    Substituting all negated literals with 1 and evaluating yields: \textbf{1}.
+    
+    \item To check clausal entailment of $(A \lor B)$, you would negate it to $\lnot A \land \lnot B$ and conjoin to the circuit and the original occurrences of A and B would be conditioned on $\lnot A \land \lnot B$:
+    \begin{center}
+        \begin{tikzpicture}[align=center]
+        \node {$and^{0}$}
+        child{
+            node{$or^{1}$}
+            child{node{...}}
+            child{node{...}}
+        }
+        child{
+            node{$\lnot A$}
+        }
+        child{
+            node{$\lnot B$}
+        };
+        \end{tikzpicture}
+    \end{center}
+    Next, you would check that this proves to be inconsistent.
+    \item To existentially quantify C in the circuit, Set all occurrences of $C$ and $\lnot C$ to True and the resulting circuit would be:
+    \begin{center}
+        \begin{tikzpicture}[align=center]
+        \node {or$^{1}$}
+        child{
+            node{and$^{2}$}
+            child{node{B}}
+            child{node{A}}
+        }
+        child{
+            node{and$^{3}$}
+            child{node{A}}
+            child{node{$\lnot$B}}
+        };
+        \end{tikzpicture}
+    \end{center}
+\end{enumerate}
 % 8
 \clearpage
 \section{}
+\begin{enumerate}
+    \item \[\]
+    \begin{center}
+           \begin{tabular}{ |c|c| }
+                \hline
+                 Node&Model Count \\ 
+                 \hline
+                n$_1$&3 \\
+                n$_2$&2 \\
+                n$_3$&1 \\
+                n$_4$&1 \\
+                 \hline
+                \end{tabular} \\
+    \end{center}
+    \item To determine if the OBDD entails $(A \lor \lnot B)$ you would need to determine if this clause is consistent with the KB the OBDD represents.  The method to perform this would be to negate the clause to $(\lnot A \land B)$, assert both literals $\lnot A$ and $B$ in the OBDD, and check that there is no path to True i.e. the negated clause is inconsistent with the KB.  When performing this, the resulting OBDD when asserting $\lnot A$ and $B$ is:
+    \begin{center}
+        \begin{tikzpicture}[align=center]
+        \node {C}
+        child{
+            node[rectangle,draw]{F}edge from parent[dashed]
+        }
+        child{
+            node[rectangle,draw]{T}
+        };
+    \end{tikzpicture}
+    \end{center}
+    This still contains a path to true is C is True which means the negate clause is not inconsistent, so the OBDD in Figure 4 does NOT entail $(A \lor \lnot B$.
+\end{enumerate}
 
 % 9
 \clearpage
