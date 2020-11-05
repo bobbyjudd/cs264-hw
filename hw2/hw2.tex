@@ -325,14 +325,14 @@ The NNF circuit is not deterministic following reasons:
         };
     \end{tikzpicture}
     \end{center}
-    This still contains a path to true is C is True which means the negate clause is not inconsistent, so the OBDD in Figure 4 does NOT entail $(A \lor \lnot B)$.
+    This still contains a path to true if C is True which means the negated clause is not inconsistent, so the OBDD in Figure 4 does NOT entail $(A \lor \lnot B)$.
 \end{enumerate}
 
 % 9
 \clearpage
 \section{}
 \begin{enumerate}
-    \item The sub functions after setting $X_1, ..., X_{[N/2]}$ would need to ensure that the cardinality is the opposite of $X_{[(N/2) + 1]}, ..., X_N$.  That is, if the caridinality of the first half is odd then the second half must even, or vice versa.  This will ensure an odd cardinality for the full OBDD.
+    \item The sub functions after setting $X_1, ..., X_{[N/2]}$ would need to ensure that the cardinality is the opposite of $X_{[(N/2) + 1]}, ..., X_N$.  That is, if the caridinality of the first half is odd then the second half must be even, or vice versa.  This will ensure an odd cardinality for the full OBDD.
     \item There is a single node for the first variable in the order, $X_1$, and two nodes for the rest of the variables which results in : $2n - 1$ nodes
     \item \[\]
     \begin{center}
@@ -368,5 +368,10 @@ The NNF circuit is not deterministic following reasons:
 % 10
 \clearpage
 \section{}
+The Decomposablity property of an NNF allows for consistency to be checked in linear time. To universally quantify a variable in $\Delta$ we need:
+\[
+\forall P\Delta = \Delta|P \land \Delta|\lnot P
+\]
 
+You need to conjoin two NNFs, one with P asserted and the other with $\lnot P$ asserted.  Each NNF ($\Delta|P$) and ($\Delta|\lnot P$) can still verify consistency in linear time individually.  The conjunction of the two is a single AND operation which is constant time, so Universal Quantification of a variable in an NNF is also linear time.
 \end{document}
