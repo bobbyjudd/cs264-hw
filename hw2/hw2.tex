@@ -325,13 +325,46 @@ The NNF circuit is not deterministic following reasons:
         };
     \end{tikzpicture}
     \end{center}
-    This still contains a path to true is C is True which means the negate clause is not inconsistent, so the OBDD in Figure 4 does NOT entail $(A \lor \lnot B$.
+    This still contains a path to true is C is True which means the negate clause is not inconsistent, so the OBDD in Figure 4 does NOT entail $(A \lor \lnot B)$.
 \end{enumerate}
 
 % 9
 \clearpage
 \section{}
-
+\begin{enumerate}
+    \item The sub functions after setting $X_1, ..., X_{[N/2]}$ would need to ensure that the cardinality is the opposite of $X_{[(N/2) + 1]}, ..., X_N$.  That is, if the caridinality of the first half is odd then the second half must even, or vice versa.  This will ensure an odd cardinality for the full OBDD.
+    \item There is a single node for the first variable in the order, $X_1$, and two nodes for the rest of the variables which results in : $2n - 1$ nodes
+    \item \[\]
+    \begin{center}
+        \begin{tikzpicture}[align=center]
+            \node[circle,draw] at (0, 0) (x1) {$X_1$};;
+            \node[circle,draw] at (-2, -2) (x2l) {$X_2$};
+            \node[circle,draw] at (2, -2) (x2r) {$X_2$};
+            \node[circle,draw] at (-2, -4) (x3l) {$X_3$};
+            \node[circle,draw] at (2, -4) (x3r) {$X_3$};
+            \node[circle,draw] at (-2, -6) (x4l) {$X_4$};
+            \node[circle,draw] at (2, -6) (x4r) {$X_4$};
+            \node[rectangle,draw] at (-2, -8) (f) {F};
+            \node[rectangle,draw] at (2, -8) (t) {T};
+            
+            \draw[dashed] (x1) -- (x2l);
+            \draw         (x1) -- (x2r);
+            \draw[dashed] (x2l) -- (x3l);
+            \draw[dashed] (x3l) -- (x4l);
+            \draw[dashed] (x4l) -- (f);
+            \draw[dashed] (x2r) -- (x3r);
+            \draw[dashed] (x3r) -- (x4r);
+            \draw[dashed] (x4r) -- (t);
+            \draw (x2l) -- (x3r);
+            \draw (x3l) -- (x4r);
+            \draw (x4l) -- (t);
+            \draw (x2r) -- (x3l);
+            \draw (x3r) -- (x4l);
+            \draw (x4r) -- (f);
+            
+        \end{tikzpicture}
+    \end{center}
+\end{enumerate}
 % 10
 \clearpage
 \section{}
