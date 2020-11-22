@@ -1,0 +1,132 @@
+\documentclass{article}
+
+% If you're new to LaTeX, here's some short tutorials:
+% https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+% https://en.wikibooks.org/wiki/LaTeX/Basics
+
+% Formatting
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+
+% Math
+% https://www.overleaf.com/learn/latex/Mathematical_expressions
+% https://en.wikibooks.org/wiki/LaTeX/Mathematics
+\usepackage{amsmath,amsfonts,amssymb,mathtools}
+
+% Images
+% https://www.overleaf.com/learn/latex/Inserting_Images
+% https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
+\usepackage{graphicx,float}
+
+% Tables
+% https://www.overleaf.com/learn/latex/Tables
+% https://en.wikibooks.org/wiki/LaTeX/Tables
+
+% Algorithms
+% https://www.overleaf.com/learn/latex/algorithms
+% https://en.wikibooks.org/wiki/LaTeX/Algorithms
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{algorithmic}
+
+% Code syntax highlighting
+% https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+\usepackage{minted}
+\usemintedstyle{borland}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+% Title content
+\title{CS264A Homework 2}
+\author{Bobby Judd}
+\date{November 4th, 2020}
+
+\begin{document}
+
+\maketitle
+
+% 1
+\clearpage
+\section{}
+The amount of different $k-1$ combinations out of $n$ items would be ${n \choose k-1}$.  For each of those unique combinations any number of the items $A_i$ could be selected, including none of them and it would still satisfy the constraint.  Conversely, all of the remaining $n-(k-1)$ item for each combination MUST NOT be selected. If $(A_k, A_{k+1}, ... , A_{n-1}, A_{n})$ represents the set of items not currently selected then the CNF to represent this looks like:
+\[
+\Delta = \lnot A_k \land \lnot A_{k+1} \land ... \land \lnot A_{n-1}\land \lnot A_{n}
+\]
+
+% 2 
+\clearpage
+\section{}
+Converting the CNF $\Delta$ to DNF and reducing produces the boolean formula:
+\[f = (A \land \lnot B) \lor (A \land \lnot C) \]
+
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+ \begin{enumerate}
+   \item The partition of $X = \{A,B\}$ and $Y = \{C\}$ produces:
+   \begin{center}
+           \begin{tabular}{ |c|c| }
+            \hline
+             Prime&Sub \\ 
+             \hline
+             $A \land B$ & $\lnot C$ \\
+             \hline
+             $A \land \lnot B$ & $true$ \\
+             \hline
+             $\lnot A \land B$ & $false$ \\
+             \hline
+             $\lnot A \land \lnot B$ & $false$ \\
+             \hline
+            \end{tabular} \\
+    \end{center}
+    The compression of the partition is:
+    \begin{center}
+       \begin{tabular}{ |c|c| }
+        \hline
+         Prime&Sub \\ 
+         \hline
+         $A \land B$ & $\lnot C$ \\
+         \hline
+         $A \land \lnot B$ & $true$ \\
+         \hline
+         $\lnot A$ & $false$ \\
+         \hline
+        \end{tabular} \\
+    \end{center}
+        
+   \item To construct an SDD you would want to use the vtree (a) because the left subtree contains \{A, B\} and the right subtree contains \{C\} 
+ \end{enumerate}
+
+% 3
+\clearpage
+\section{}
+
+ % 4
+ \clearpage
+ \section{}
+ 
+ % 5
+ \clearpage
+ \section{}
+
+ % 6
+ \clearpage
+ \section{}
+ 
+ % 7
+ \clearpage
+ \section{}
+
+% 8
+\clearpage
+\section{}
+
+% 9
+\clearpage
+\section{}
+
+% 10
+\clearpage
+\section{}
+
+\end{document}
