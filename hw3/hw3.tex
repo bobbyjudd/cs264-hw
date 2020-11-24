@@ -100,7 +100,73 @@ Converting the CNF $\Delta$ to DNF and reducing produces the boolean formula:
 % 3
 \clearpage
 \section{}
+\renewcommand{\labelenumi}{(\alph{enumi})}
+ \begin{enumerate}
+\item The partition of $f = (A \land B)\lor(B \land C)\lor(C \land D)$ for $X = \{A,C\}$ and $Y = \{B, D\}$ produces:
+\begin{center}
+       \begin{tabular}{ |c|c| }
+        \hline
+         Prime&Sub \\ 
+         \hline
+         $A \land C$ & $B \lor D$ \\
+         \hline
+         $A \land \lnot C$ & $B$ \\
+         \hline
+         $\lnot A \land C$ & $B \lor D$ \\
+         \hline
+         $\lnot A \land \lnot C$ & $false$ \\
+         \hline
+        \end{tabular} \\
+\end{center}
+The compression of the partition is:
+\begin{center}
+       \begin{tabular}{ |c|c| }
+        \hline
+         Prime&Sub \\ 
+         \hline
+         $A \land \lnot C$ & $B$ \\
+         \hline
+         $C$ & $B \lor D$ \\
+         \hline
+         $\lnot A \land \lnot C$ & $false$ \\
+         \hline
+        \end{tabular} \\
+\end{center}
+    
+\item The partition of $\lnot f$ for $X = \{A,C\}$ and $Y = \{B, D\}$ produces:
+\begin{center}
+       \begin{tabular}{ |c|c| }
+        \hline
+         Prime&Sub \\ 
+         \hline
+         $A \land C$ & $\lnot B \land \lnot D$ \\
+         \hline
+         $A \land \lnot C$ & $\lnot B$ \\
+         \hline
+         $\lnot A \land C$ & $\lnot B \land \lnot D$ \\
+         \hline
+         $\lnot A \land \lnot C$ & $true$ \\
+         \hline
+        \end{tabular} \\
+\end{center}
+The compression of the partition is:
+\begin{center}
+       \begin{tabular}{ |c|c| }
+        \hline
+         Prime&Sub \\ 
+         \hline
+         $A \land \lnot C$ & $\lnot B$ \\
+         \hline
+         $C$ & $\lnot B \land \lnot D$ \\
+         \hline
+         $\lnot A \land \lnot C$ & $true$ \\
+         \hline
+        \end{tabular} \\
+\end{center}
 
+\item For any function $f$ you can simply copy its primes and negate its subs to produce the partition of $\lnot f$
+\end{enumerate}
+   
  % 4
  \clearpage
  \section{}
