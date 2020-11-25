@@ -170,7 +170,37 @@ The compression of the partition is:
  % 4
  \clearpage
  \section{}
- 
+ Using the same label convention for the vtree nodes (6, 2, 5) in lecture:
+ \begin{center}
+\begin{tikzpicture}[align=center]
+    \node[circle,draw] at (0, 0) (x1) {6};;
+    \node[rectangle,draw] at (-2, -2) (n10) {$A \land \lnot C | B$};
+    \node[rectangle,draw] at (0, -2) (n11) {$\lnot A \land \lnot C | \bot$};
+    \node[rectangle,draw] at (2, -2) (n12) {$C | B \lor D$};
+    \node[circle,draw] at (-2, -3) (n20) {2};
+    \node[circle,draw] at (0, -3) (n21) {2};
+    \node[circle,draw] at (2, -3) (n22) {5};
+    \node[rectangle,draw] at (-3, -5) (n30) {$\lnot C | A$};
+    \node[rectangle,draw] at (-1, -5) (n31) {$C | \bot$};
+    \node[rectangle,draw] at (1, -5) (n32) {$\lnot C | \lnot A$};
+    \node[rectangle,draw] at (3, -5) (n33) {$B | \top$};
+    \node[rectangle,draw] at (5, -5) (n34) {$\lnot B | D$};
+    
+    \draw[->]       (x1) -- (n10);
+    \draw[->]       (x1) -- (n11);
+    \draw[->]       (x1) -- (n12);
+    \draw[->]       (n10) -- (n20);
+    \draw[->]       (n11) -- (n21);
+    \draw[->]       (n12) -- (n22);
+    \draw[->]       (n20) -- (n30);
+    \draw[->]       (n20) -- (n31);
+    \draw[->]       (n21) -- (n31);
+    \draw[->]       (n21) -- (n32);
+    \draw[->]       (n22) -- (n33);
+    \draw[->]       (n22) -- (n34);
+\end{tikzpicture}
+\end{center}
+
  % 5
  \clearpage
  \section{}
