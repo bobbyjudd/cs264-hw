@@ -204,7 +204,70 @@ The compression of the partition is:
  % 5
  \clearpage
  \section{}
-
+\renewcommand{\labelenumi}{(\alph{enumi})}
+ \begin{enumerate}
+\item The uncompressed partition of $f = (A \land B)\lor(B \land C)\lor(C \land D)$ for $X = \{A,B\}$ and $Y = \{C, D\}$ is:
+    \begin{center}
+           \begin{tabular}{ |c|c| }
+            \hline
+             Prime&Sub \\ 
+             \hline
+             $A \land B$ & $true$ \\
+             \hline
+             $A \land \lnot B$ & $C \land D$ \\
+             \hline
+             $\lnot A \land B$ & $C$ \\
+             \hline
+             $\lnot A \land \lnot B$ & $C \land D$ \\
+             \hline
+            \end{tabular} \\
+    \end{center}
+\item The uncompressed partition of $g = (\lnot A \land B)\lor(C \land \lnot D)$ for $X = \{A,B\}$ and $Y = \{C, D\}$ is:
+    \begin{center}
+           \begin{tabular}{ |c|c| }
+            \hline
+             Prime&Sub \\ 
+             \hline
+             $A \land B$ & $C \land \lnot D$ \\
+             \hline
+             $A \land \lnot B$ & $C \land \lnot D$ \\
+             \hline
+             $\lnot A \land B$ & $true$ \\
+             \hline
+             $\lnot A \land \lnot B$ & $C \land \lnot D$ \\
+             \hline
+            \end{tabular} \\
+    \end{center}
+\item The uncompressed partition of $f \lor g$ for $X = \{A,B\}$ and $Y = \{C, D\}$ is:
+    \begin{center}
+           \begin{tabular}{ |c|c| }
+            \hline
+             Prime&Sub \\ 
+             \hline
+             $A \land B$ & $true$ \\
+             \hline
+             $A \land \lnot B$ & $C$ \\
+             \hline
+             $\lnot A \land B$ & $true$ \\
+             \hline
+             $\lnot A \land \lnot B$ & $C$ \\
+             \hline
+            \end{tabular} \\
+    \end{center}
+    Which compresses to:
+    \begin{center}
+           \begin{tabular}{ |c|c| }
+            \hline
+             Prime&Sub \\ 
+             \hline
+             $B$ & $true$ \\
+             \hline
+             $\lnot B$ & $C$ \\
+             \hline
+            \end{tabular} \\
+    \end{center}
+    This equivalent to $h = (B \lor C)$.
+\end{enumerate}
  % 6
  \clearpage
  \section{}
