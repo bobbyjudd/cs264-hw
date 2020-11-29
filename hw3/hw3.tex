@@ -272,16 +272,69 @@ The compression of the partition is:
  \clearpage
  \section{}
  \[(\lnot A \lor B \lor \lnot C) \land (\lnot A \lor B \lor C) \land (A \lor \lnot B \lor \lnot C) \land (A \lor \lnot B \lor C) \land (A \lor B \lor C)\]
- The prime implicates produced by resolution between original terms:
+ The prime implicates produced by resolution of original terms:
  \[
     (\lnot A \lor B) \land (A \lor \lnot B) \land (A \lor C) \land (B \lor C)
 \]
  % 7
  \clearpage
  \section{}
+ \renewcommand{\labelenumi}{}
+ \begin{enumerate}
+\item MC:\\
+ The largest set of features that can be turned off (to 0) from the world $(S=1, G=1, F=1, M=0)$ is 2 and the two worlds which satisfy that are $(S=0, G=0, F=1, M=0)$ and $(S=0, G=1, F=0, M=0)$.
+\item PI:\\
+The smallest feature set $\alpha$ of the instance $(S=1, G=0, F=1, M=1)$ which creates a remaining arbitrary feature set $\beta$ is: \\
+$\alpha = \{F=1, M=1\}$ \\
+$\beta = \{S=1/0, G=1/0\}$
+\end{enumerate}
+ 
 
 % 8
 \clearpage
 \section{}
-
+\[ \Delta = \begin{cases} 
+      ok_1 \Rightarrow (A \Leftrightarrow \lnot B)\\
+      ok_2 \Rightarrow (A \land B) \Leftrightarrow C\\
+   \end{cases}
+\]
+\renewcommand{\labelenumi}{}
+\begin{enumerate}
+\item The kernel and MC diagnosis when the output is true:
+\[Health(\Delta, C) = \lnot ok_1 \lor \lnot ok_2\]
+\begin{center}
+           \begin{tabular}{ |c|c|c| }
+            \hline
+             $ok_1$&$ok_2$&Diagnosis for C? \\ 
+             \hline
+             \checkmark & \checkmark & no \\
+             \hline
+             \checkmark & $\times$ & yes \\
+             \hline
+             $\times$ & \checkmark & yes \\
+             \hline
+             $\times$ & $\times$ & yes \\
+             \hline
+            \end{tabular} \\
+    \end{center}
+    The minimum cardinality is 1 in this case.
+\item The kernel and MC diagnosis when the output is false:
+    \[Health(\Delta, \lnot C) = true\]
+    \begin{center}
+               \begin{tabular}{ |c|c|c| }
+                \hline
+                 $ok_1$&$ok_2$&Diagnosis for $\lnot C$? \\ 
+                 \hline
+                 \checkmark & \checkmark & yes \\
+                 \hline
+                 \checkmark & $\times$ & yes \\
+                 \hline
+                 $\times$ & \checkmark & yes \\
+                 \hline
+                 $\times$ & $\times$ & yes \\
+                 \hline
+                \end{tabular} \\
+        \end{center}
+        The minimum cardinality is 0.
+\end{enumerate}
 \end{document}
